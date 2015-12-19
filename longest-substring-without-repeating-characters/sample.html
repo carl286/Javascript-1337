@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var lengthOfLongestSubstring = function(s) {
+    if (s.length <= 1)
+        return s.length;
+
+    var ret = 1;
+    var set = new Set();
+    set.add(s.charAt(0));
+
+    var start = 0, index = 1; 
+    while (index < s.length) {
+        if (set.has(s.charAt(index))) {
+            while (s.charAt(start) != s.charAt(index)) {
+                set.delete(s.charAt(start));
+                ++start;
+            }
+            ++start;
+        } else {
+            set.add(s.charAt(index));
+        }
+        index++;
+        ret = Math.max(ret, set.size);
+    }
+    return ret;
+};
+var s = "abcabcabc";
+alert(lengthOfLongestSubstring(s));
+</script>
+
+</body>
+</html>

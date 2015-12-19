@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <meta http-equiv="charset" content="utf-8"></head>
+
+<body>
+    <script>
+
+var voldemort = {
+    hasOwnProperty: function () { return true; }
+};
+
+// Outputs: true
+console.log(voldemort.hasOwnProperty("ridikulus"));
+
+Object.prototype.hasOwnProperty.call(voldemort, "ridikulus");
+
+document.write("<br>");
+    </script></body>
+

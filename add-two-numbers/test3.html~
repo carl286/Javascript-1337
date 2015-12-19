@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta http-equiv="charset" content="utf-8"></head>
+
+<body>
+    <script>
+        var nums=[2, 7, 11, 15];
+        var target = 9;
+
+        var addTwoNumbers = function(l1, l2) {
+
+                
+
+        };
+
+        var twoSum = function(nums, target) {
+                // 用对象来模拟hash table
+                // 将所有数组放进hash里面，key为当前值，value为下标
+                var hash = {};
+
+                // 遍历数组，如果hash里面有key和数组当前的值相加为target，那么就是那两下标了
+                // 注意要判断两下标不能一样
+                for(var i=0; i<nums.length; i++) {
+                        var needValue = target-nums[i];
+                        if(hash.hasOwnProperty(needValue)) {
+                                var index2 = i+1;
+                                var index1 = hash[needValue]+1;
+                                return [index1, index2];
+                        } else {
+                            hash[nums[i]] = i;
+                        }
+                }
+        };
+
+        alert(twoSum(nums, target));
+    </script></body>

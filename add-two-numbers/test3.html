@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <meta http-equiv="charset" content="utf-8"></head>
+
+<body>
+    <script>
+
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
+}
+        var nums=[2, 7, 11, 15];
+        var target = 9;
+
+        var addHelper = function(l1, l2, carryon) {
+            if (!l1 && !l2) {
+                if (carryon) {
+                    return new ListNode(carryon)
+                } else {
+                    return null 
+                }
+            }
+
+            var ret = new ListNode(carryon);
+            var next_l1 = null, next_l2 = null;
+            if (l1) {
+                ret.val += l1.val
+                next_l1 = l1.next
+            }
+            if (l2) {
+                ret.val += l2.val
+                next_l2 = l2.next
+            }
+            if (ret.val >= 10) {
+                ret.val -= 10;
+                carryon = 1;
+            } else {
+                carryon = 0;
+            }
+            ret.next = addHelper(next_l1, next_l2, carryon);
+            return ret;
+        };
+
+        var addTwoNumbers = function(l1, l2) {
+            return addHelper(l1, l2, 0)
+        };
+
+        var twoSum = function(nums, target) {
+                // 用对象来模拟hash table
+                // 将所有数组放进hash里面，key为当前值，value为下标
+                var hash = {};
+
+                // 遍历数组，如果hash里面有key和数组当前的值相加为target，那么就是那两下标了
+                // 注意要判断两下标不能一样
+                for(var i=0; i<nums.length; i++) {
+                        var needValue = target-nums[i];
+                        if(hash.hasOwnProperty(needValue)) {
+                                var index2 = i+1;
+                                var index1 = hash[needValue]+1;
+                                return [index1, index2];
+                        } else {
+                            hash[nums[i]] = i;
+                        }
+                }
+        };
+
+        var l1 = new ListNode(1)
+        var l2 = new ListNode(2)
+        document.writeln(addTwoNumbers(l1,l2).val);
+//        alert(twoSum(nums, target));
+    </script></body>

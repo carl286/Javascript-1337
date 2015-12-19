@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+/*
+function myFunction()
+{
+alert("Hello World!");
+}
+*/
+</script>
+</head>
+
+<body>
+<button onclick="myFunction()">点击这里</button>
+
+<script>
+var twoSum = function(nums, target) {
+	return 2;    
+};
+document.write(twoSum);
+</script>
+
+</body>
+</html>
+
